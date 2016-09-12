@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 //
 import java.util.List;
 import java.util.Map;
+import graph.*;
+import java.util.*;
 /**
  *
  * Solver for Lewis Carrol's Doublets game.
@@ -25,6 +27,11 @@ import java.util.Map;
 	 */
 	public Doublets(final String wordFile) throws FileNotFoundException {
 		// Your code here.
+		wordList = new HashMap<String, Vertex<String>>();
+		graph = new AdjacencyMapGarph<String, String>();
+		Reader file = new FileReader(new File(wordFile));
+		Scanner sc = new Scanner()
+		
 	}
 
 	/**

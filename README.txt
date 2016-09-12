@@ -1,0 +1,1 @@
+This file takes in a dictionary and builds a graph with all the words linking all the words with one difference in a letter. It then asks the user to insert two words. The program will then transform the one word into the other by only changing one letter every generation. eg- DOG->DOT->COT->CAT. This is a transformation from the word dog to cat

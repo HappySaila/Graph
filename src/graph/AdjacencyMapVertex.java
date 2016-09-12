@@ -48,7 +48,7 @@ class AdjacencyMapVertex<V, E> extends Vertex<V> {
 	 */
 	boolean isAdjacentTo(final AdjacencyMapVertex<V, E> other) { 
 		// Your code here
-		return false;
+		return this.edges.containsKey(other);
 	}
 	
 	/**
@@ -56,6 +56,7 @@ class AdjacencyMapVertex<V, E> extends Vertex<V> {
 	 */
 	void insert(final AdjacencyMapEdge<E, V> edge) { 
 		// Your code here
+		edges.put(this.graph , edge);
 	}
 	
 	/**
@@ -64,6 +65,13 @@ class AdjacencyMapVertex<V, E> extends Vertex<V> {
 	 */
 	void remove(final AdjacencyMapEdge<E, V> edge) { 
 		// Your code here
+		Iterable<AdjacencyMapEdge<E, V>> allEdges = getIncidentOn();
+		while(allEdges.hasNext()){
+			AdjacencyMapEdge<E, V> currentEdge= allEdge.getNext();
+			if (currentEdge==edge){
+				edges.remove(currentEdge);
+			}
+		}
 	}
 	
 	/**
@@ -72,6 +80,13 @@ class AdjacencyMapVertex<V, E> extends Vertex<V> {
 	 */
 	void remove(final AdjacencyMapVertex<V, E> vertex) {
 		// Your code here
+		Iterable<AdjacencyMapVertex<V, E>> allEdge = getNeighbours();
+		while(allEdges.hasNext()){
+			AdjacencyMapVertex<V, E> currentVertex= allEdge.getNext();
+			if (currentVertex==vertex){
+				edges.remove(currentVertex);
+			}
+		}
 	}
 	
 	/**

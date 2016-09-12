@@ -1,6 +1,6 @@
 # Makefile for Graph Assignment
 
-LIB = ../lib
+LIB = lib
 SRCDIR = src
 BINDIR = bin
 TESTDIR = test
@@ -28,7 +28,7 @@ vpath %.class $(BINDIR)/graph:$(BINDIR)/utils:$(BINDIR)
 #default rule - will be invoked by make
 all: Pair.class GraphEntity.class Edge.class Vertex.class Graph.class  \
 	AdjacencyMapVertex.class AdjacencyMapEdge.class AdjacencyMapGraph.class \
-	ClusterBuilder.class Doublets.class
+	ClusterBuilder.class Doublets.class Harness.class \
 	
 # Rules for dealing with dependencies between GraphEntity and Graph
 Graph.class: GraphEntity.class Edge.class Vertex.class
@@ -71,3 +71,7 @@ clean:
 	@rm -f jacoco.exec *.xml *.csv
 	@rm -Rf coveragereport
 	@rm -Rf doc
+run: all
+	java Harness
+re: 
+	java.Harness

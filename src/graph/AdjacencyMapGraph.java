@@ -34,61 +34,85 @@ import java.util.Set;
    
 	public Iterable<AdjacencyMapEdge<E, V>> getIncidentOn(final Vertex<V> vertex) {
 		// Your code here
-		return null;
+		AdjacencyMapVertex<V, E> adjacencyVertex = this.cast(vertex);
+		return adjacencyVertex.getIncidentOn();
 	}
 
 	public Iterable<AdjacencyMapVertex<V, E>> getNeighbours(Vertex<V> v) {
 		// Your code here
-		return null;
+		AdjacencyMapVertex<V, E> adjacencyVertex = this.cast(v);
+		return adjacencyVertex.getNeighbours();
 	}
 		
 	public Pair<AdjacencyMapVertex<V, E>> getVertices(final Edge<E> edge) {
 		// Your code here
-		return null;
+		AdjacencyMapEdge<E, V> adjacencyEdge = this.cast(edge);
+		return adjacencyEdge.getVertices();
 	}
     
 	public AdjacencyMapVertex<V, E> getOpposite(final Vertex<V> vertex, final Edge<E> edge){
 		// Your code here
-		return null;
+		AdjacencyMapEdge<E, V> adjacencyEdge = this.cast(edge);
+		Pair<AdjacencyMapVertex<V, E>> vertices = getVertices();
+		if (vertices.getLeft()==vertex){
+			return vertices.getRight();
+		}
+		else{
+			return vertices.getLeft();
+		}
 	}
     
 	public boolean areAdjacent(final Vertex<V> v, final Vertex<V> w) {
-		// Your code here
+		// Your code hereset
+		AdjacencyMapVertex<V, E> adjacencyVertex = this.cast(v);
+		Iterable<AdjacencyMapVertex<V, E>> iterator = adjacencyVertex.getNeighbours();
+		while(iterator.hasNext()){
+			if (iterator.getNext()==w){
+				return true;
+			}
+		}
 		return false;
 	}
    
 	public V replace(final Vertex<V> vertex, final V value) {
 		// Your code here
-		return null;
+		vertex.setValue(value);
+		return vertex;
 	}
 
 	public E replace(final Edge<E> edge, final E value) {
 		// Your code here
-		return null;
+		edge.setValue(value);
+		return edge;
 	}
    
 	public AdjacencyMapVertex<V, E> insert(final V value) {
 		// Your code here
-		return null;
+		vertices.add(this.createVertex(value));
+		return this.createVertex(value);
 	}
 
 	public AdjacencyMapEdge<E, V> insert(Vertex<V> v, Vertex<V> w, E value) {
-		// Your code here
-		return null;
+		edges.add(this.createEdge(v, w, value));
+		return this.createEdge(v, w, value);
 	}
    
 	public V remove(Vertex<V> vertex) {
 		// Your code here
-		return null;
+		vertices.remove(this.cast(vertex));
+		return vertex.getValue();
 	}	
 
 	public E remove(Edge<E> edge)  {
 		// Your code here
-		return null;
+		edges.remove(this.cast(edge));
+		return edge.getValue();
 	}
 	
 	public void clearMarks() {
 		// Your code here
+		edges.foreach(E -> E.clearMarks());
+		vertices.foreach(E -> E.clearMarks());
 	}		
 	/*
 	 * The following methods should be used to create edges and vertices.
